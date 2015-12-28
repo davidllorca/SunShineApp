@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
@@ -14,13 +15,24 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    /** API KEY ac7cd7f409df802354e9b65f38ed351a */
+    /**
+     * API KEY ac7cd7f409df802354e9b65f38ed351a
+     * Example of API call:
+     *
+     * api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=ac7cd7f409df802354e9b65f38ed351a
+     */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,53 +60,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceHolderFragment extends Fragment {
-
-        private ArrayAdapter<String> mForecastAdapter;
-
-        public PlaceHolderFragment() {
-
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-
-            // dummy data
-            String [] forecastArray = {
-                    "Today - sunny",
-                    "Tomorrow - foggy",
-                    "Wed - sunny",
-                    "Thur - sunny",
-                    "Fri - sunny",
-                    "Sat - sunny",
-                    "Sun - Cloudy"
-            };
-
-            ArrayList<String> weekForecast = new ArrayList<String>(Arrays.asList(forecastArray));
-
-            ArrayAdapter<String> mForecastAdapter = new ArrayAdapter<String>(
-                    // Context of fragment
-                    getActivity(),
-                    // ID list layout
-                    R.layout.list_item_forecast,
-                    // ID item list
-                    R.id.list_item_forecast_textview,
-                    // Data
-                    weekForecast);
-
-            // Get a reference to the ListView, and attach adapter
-            ListView listView = (ListView) rootView.findViewById(R.id.listview_forecast);
-            listView.setAdapter(mForecastAdapter);
-
-            return rootView;
-        }
     }
 
 }
