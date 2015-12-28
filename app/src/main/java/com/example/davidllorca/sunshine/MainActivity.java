@@ -20,21 +20,12 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
+    /** API KEY ac7cd7f409df802354e9b65f38ed351a */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
     @Override
@@ -67,12 +58,6 @@ public class MainActivity extends AppCompatActivity {
         private ArrayAdapter<String> mForecastAdapter;
 
         public PlaceHolderFragment() {
-            list.add("Today - sunny");
-            list.add("Tomorrow - foggy");
-            list.add("Wed - sunny");
-            list.add("Thur - sunny");
-            list.add("Fri - sunny");
-            list.add("Sat - sunny");
 
         }
 
