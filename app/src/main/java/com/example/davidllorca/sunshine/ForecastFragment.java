@@ -176,15 +176,11 @@ public class ForecastFragment extends Fragment {
 
                 Log.v(LOG_TAG, "Forecast JSON String: " + forecastJsonStr);
 
-                String[] weatherForecast = getWeatherDataFromJson(forecastJsonStr,7);
-
             } catch (IOException e) {
                 Log.e(LOG_TAG, "Error ", e);
                 // If the code didn't successfully get the weather data, there's no point in attemping
                 // to parse it.
                 return null;
-            } catch (JSONException e) {
-                e.printStackTrace();
             } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();
@@ -197,6 +193,13 @@ public class ForecastFragment extends Fragment {
                     }
                 }
             }
+
+            try {
+                return getWeatherDataFromJson(forecastJsonStr,7);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
             return null;
         }
 
